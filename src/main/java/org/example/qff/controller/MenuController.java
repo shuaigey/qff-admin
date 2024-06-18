@@ -3,7 +3,6 @@ package org.example.qff.controller;
 import io.swagger.annotations.Api;
 import org.example.qff.common.result.QffResponse;
 import org.example.qff.entity.Menu;
-import org.example.qff.entity.User;
 import org.example.qff.param.MenuParam;
 import org.example.qff.service.MenuService;
 import org.springframework.web.bind.annotation.*;
