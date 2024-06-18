@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author liufan
  * @version 1.0
- * @date 2024/3/5 14:00
+ * @date 2024/3/5
  **/
 
 @Repository
