@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.qff.common.result.ErrorCode;
 import org.example.qff.common.result.QffResponse;
 import org.example.qff.common.result.ResultUtils;
-import org.example.qff.common.util.ConstantUtil;
-import org.example.qff.common.util.GetUtil;
-import org.example.qff.common.util.MD5Util;
-import org.example.qff.common.util.TimeUtil;
+import org.example.qff.common.util.*;
 import org.example.qff.dao.RoleMapper;
 import org.example.qff.dao.UserMapper;
 import org.example.qff.entity.Role;
@@ -36,8 +33,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RoleMapper roleMapper;
 
-    @Autowired
-    RedisTemplate redisTemplate;
+    @Resource
+    private RedisUtil redisUtil;
+
+    @Resource
+    private RedisTemplate  redisTemplate;
 
 
     @Override
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
             return ResultUtils.error(ErrorCode.LOGIN_ERROR, ConstantUtil.LOGIN_ERROR);
         }
         redisTemplate.opsForValue().set(param.getPhone(),param.getPassword());
-
+        redisUtil.setRedisTemplate(redisTemplate);
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
             user.setLastLoginTime(TimeUtil.nowTime());
