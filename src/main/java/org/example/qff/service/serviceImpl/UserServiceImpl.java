@@ -13,6 +13,8 @@ import org.example.qff.dao.UserMapper;
 import org.example.qff.entity.Role;
 import org.example.qff.entity.User;
 import org.example.qff.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -33,6 +35,10 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private RoleMapper roleMapper;
+
+    @Autowired
+    RedisTemplate redisTemplate;
+
 
     @Override
     public QffResponse registerUser(User param) {
@@ -66,7 +72,8 @@ public class UserServiceImpl implements UserService {
         if (!passwordFlag || !user.getPhone().equals(param.getPhone())) {
             return ResultUtils.error(ErrorCode.LOGIN_ERROR, ConstantUtil.LOGIN_ERROR);
         }
-        //redis判断登录几次，改变账号状态
+        redisTemplate.opsForValue().set(param.getPhone(),param.getPassword());
+
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
             user.setLastLoginTime(TimeUtil.nowTime());
