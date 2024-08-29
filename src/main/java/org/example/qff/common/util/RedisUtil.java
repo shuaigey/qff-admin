@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Component;
 
 /**
  * @author liufan
  * @version 1.0
  * @date 2024/8/23 13:43
  **/
-
+@Component
 public class RedisUtil {
     @Autowired
     private RedisTemplate redisTemplate;
