@@ -73,7 +73,6 @@ public class UserServiceImpl implements UserService {
             return ResultUtils.error(ErrorCode.LOGIN_ERROR, ConstantUtil.LOGIN_ERROR);
         }
         redisTemplate.opsForValue().set(param.getPhone(),param.getPassword());
-        redisUtil.setRedisTemplate(redisTemplate);
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
             user.setLastLoginTime(TimeUtil.nowTime());
