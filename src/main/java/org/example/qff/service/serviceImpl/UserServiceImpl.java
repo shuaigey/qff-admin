@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
         if (!passwordFlag || !user.getPhone().equals(param.getPhone())) {
             return ResultUtils.error(ErrorCode.LOGIN_ERROR, ConstantUtil.LOGIN_ERROR);
         }
+
         redisTemplate.opsForValue().set(param.getPhone(),param.getPassword());
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
