@@ -16,4 +16,10 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
 
+email:
+  user: 772726716@qq.com
+  code: uitggvbbrtjebdbg
+  host: smtp.qq.com
+  auth: ture
+
 
