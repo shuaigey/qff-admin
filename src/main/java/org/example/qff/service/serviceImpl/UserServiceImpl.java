@@ -17,6 +17,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author liufan
@@ -75,6 +77,11 @@ public class UserServiceImpl implements UserService {
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
             user.setLastLoginTime(TimeUtil.nowTime());
+            Map<String,Object> map=new HashMap<>();
+            map.put("id",user.getUserId());
+            map.put("username",user.getUserName());
+            String creatJwt = JwtUtil.creatJwt(map);
+            System.out.println(creatJwt);
             userMapper.updateById(user);
             return ResultUtils.success(ConstantUtil.LOGIN_SUCCESS);
         }
