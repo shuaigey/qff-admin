@@ -51,5 +51,8 @@ public class User {
     @TableField("status")
     private String status;
 
+    @TableField("picture")
+    private String picture;
+
 
 }

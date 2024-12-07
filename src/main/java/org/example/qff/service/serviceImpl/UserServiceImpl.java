@@ -33,8 +33,6 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RoleMapper roleMapper;
 
-    @Resource
-    private RedisUtil redisUtil;
 
     @Resource
     private RedisTemplate  redisTemplate;

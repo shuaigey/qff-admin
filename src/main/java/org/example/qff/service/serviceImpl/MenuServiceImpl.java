@@ -37,7 +37,6 @@ public class MenuServiceImpl implements MenuService {
     private final MenuMapper menuMapper;
 
 
-
     @Resource
     RoleMapper roleMapper;
 
@@ -88,20 +87,19 @@ public class MenuServiceImpl implements MenuService {
                     }
                 }
         );
-        //
+        //筛选出父ID的父目录
         List<Menu> collect = menus.stream().filter(s -> s.getPId() == ZERO_I).collect(Collectors.toList());
         return ResultUtils.success(collect);
     }
 
     @Override
     public QffResponse updateMenu(Menu menuParam) {
-        if(StringUtils.isEmpty(menuParam.getId())){
+        if (StringUtils.isEmpty(menuParam.getId())) {
             return ResultUtils.error(ErrorCode.PARAMS_ERROR);
         }
         Menu menu = menuMapper.selectById(menuParam.getId());
         menu.setStatus(menuParam.getStatus());
-        menu.setName(menuParam.getName());
-        menuMapper.updateById(menu);
+        menu.setReferred(menuParam.getReferred());
         return ResultUtils.success(SUCCESS);
     }
 }

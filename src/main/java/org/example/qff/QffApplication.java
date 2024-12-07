@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author HUAWEI
  */
 /*扫描包 scanBasePackages*/
-@SpringBootApplication(scanBasePackages = {"org.example.qff"})
+@SpringBootApplication
 public class QffApplication {
 
     public static void main(String[] args) {

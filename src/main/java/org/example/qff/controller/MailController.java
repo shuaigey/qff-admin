@@ -1,5 +1,6 @@
 package org.example.qff.controller;
 
+import io.swagger.annotations.Api;
 import org.example.qff.service.MailService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,8 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date 2024/11/26 16:53
  **/
+@Api(tags = "邮件")
+@RequestMapping("/mail")
 @RestController
 public class MailController {
 
