@@ -26,11 +26,11 @@ public class ResultUtils {
     }
     /**
      * 成功
-     * @param message
+     * @param data
      * @return
      */
-    public static QffResponse success(String message) {
-        return new QffResponse(200, null, message);
+    public static QffResponse success(String data,String message) {
+        return new QffResponse(200, data, message);
     }
 
     /**

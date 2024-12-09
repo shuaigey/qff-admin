@@ -23,17 +23,17 @@ public class MenuController {
 
     @Resource
     MenuService menuService;
-
+    /*新增菜单*/
     @PostMapping("/insertMenu")
     public QffResponse insertMenu(@RequestBody MenuParam menuParam ) {
         return menuService.insertMenu(menuParam);
     }
-
+    /*查询菜单*/
     @GetMapping("/selectAll")
     public QffResponse<List<Menu>> selectMenu(@RequestParam("userId") String userId){
         return menuService.selectMenu(userId);
     }
-
+    /*修改菜单信息*/
     @PostMapping("/updateMenu")
     public QffResponse updateMenu(@RequestBody Menu menuParam){
         return menuService.updateMenu(menuParam);

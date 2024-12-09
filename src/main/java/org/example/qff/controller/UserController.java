@@ -22,25 +22,27 @@ import javax.annotation.Resource;
 public class UserController {
     @Resource
     private UserService userService;
-
+    /*注册用户*/
     @PostMapping("/register")
     public QffResponse registerUser(@RequestBody User userParam) {
         return userService.registerUser(userParam);
     }
-
+    /*登录用户*/
     @PostMapping("/login")
     public QffResponse loginUser(@RequestBody User userParam) {
         return userService.loginUser(userParam);
     }
-
+    /*新增角色权限*/
     @PostMapping("/insertRole")
     public QffResponse insertRole(@RequestBody Role roleParam) {
         return userService.insertRole(roleParam);
     }
-
+    /*修改角色信息*/
     @PostMapping("/updateRole")
     public QffResponse updateRole(@RequestBody Role roleParam) {
         return userService.updateRole(roleParam);
     }
+
+    /*根据登录人查询个人信息*/
 
 }

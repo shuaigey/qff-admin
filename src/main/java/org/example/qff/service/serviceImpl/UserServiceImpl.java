@@ -10,7 +10,6 @@ import org.example.qff.dao.UserMapper;
 import org.example.qff.entity.Role;
 import org.example.qff.entity.User;
 import org.example.qff.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -77,13 +76,13 @@ public class UserServiceImpl implements UserService {
         //登录
         if (passwordFlag && user.getPhone().equals(param.getPhone())) {
             user.setLastLoginTime(TimeUtil.nowTime());
+            //获取登陆token
             Map<String,Object> map=new HashMap<>();
             map.put("id",user.getUserId());
             map.put("username",user.getUserName());
             String creatJwt = JwtUtil.creatJwt(map);
-            System.out.println(creatJwt);
             userMapper.updateById(user);
-            return ResultUtils.success(ConstantUtil.LOGIN_SUCCESS);
+            return ResultUtils.success(creatJwt,ConstantUtil.LOGIN_SUCCESS);
         }
         return ResultUtils.error(ErrorCode.PARAMS_ERROR, ConstantUtil.LOGIN_ERROR);
     }

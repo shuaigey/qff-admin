@@ -14,10 +14,10 @@ import java.util.Map;
  * @date 2024/3/15 8:32
  **/
 public interface MenuService {
-    /*新增菜单*/
+
     QffResponse insertMenu(MenuParam menuParam);
-    /*查询菜单*/
+
     QffResponse<List<Menu>> selectMenu(String userId);
-    /*修改菜单信息*/
+
     QffResponse updateMenu(Menu menuParam);
 }
