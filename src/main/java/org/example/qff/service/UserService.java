@@ -21,4 +21,6 @@ public interface UserService {
      QffResponse insertRole(Role roleParam);
 
      QffResponse updateRole(Role roleParam);
+
+     QffResponse getToken(String token);
 }

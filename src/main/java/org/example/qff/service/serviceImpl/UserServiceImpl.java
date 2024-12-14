@@ -1,5 +1,6 @@
 package org.example.qff.service.serviceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.example.qff.common.result.ErrorCode;
 import org.example.qff.common.result.QffResponse;
@@ -81,6 +82,7 @@ public class UserServiceImpl implements UserService {
             map.put("id",user.getUserId());
             map.put("username",user.getUserName());
             String creatJwt = JwtUtil.creatJwt(map);
+            System.out.print(creatJwt);
             userMapper.updateById(user);
             return ResultUtils.success(creatJwt,ConstantUtil.LOGIN_SUCCESS);
         }
@@ -108,6 +110,21 @@ public class UserServiceImpl implements UserService {
         role.setCode(GetUtil.getPinYinHeadChar(roleParam.getRoleName()));
         roleMapper.updateById(role);
         return ResultUtils.success(role);
+    }
+
+    @Override
+    public QffResponse getToken(String token) {
+        /*解析token*/
+        Map<String, Object> tokenMap = JwtUtil.parseJwt(token);
+        String id = (String) tokenMap.get("id");
+        /*  查询登录人信息*/
+        if (StringUtils.isEmpty(id)){
+            return ResultUtils.error(ErrorCode.NULL_ERROR,ConstantUtil.ERROR);
+        }
+        QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
+        userQueryWrapper.eq("user_id",id);
+        User user = userMapper.selectList(userQueryWrapper).get(0);
+        return ResultUtils.success(user);
     }
 }
 

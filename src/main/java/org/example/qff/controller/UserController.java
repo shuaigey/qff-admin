@@ -2,6 +2,8 @@ package org.example.qff.controller;
 
 import io.swagger.annotations.Api;
 
+import io.swagger.annotations.ResponseHeader;
+import org.apache.ibatis.annotations.Param;
 import org.example.qff.common.result.QffResponse;
 import org.example.qff.entity.Role;
 import org.example.qff.entity.User;
@@ -44,5 +46,9 @@ public class UserController {
     }
 
     /*根据登录人查询个人信息*/
+    @GetMapping("/getToken")
+    public QffResponse getToken(@RequestParam("token") String token){
+        return userService.getToken(token);
+    }
 
 }
