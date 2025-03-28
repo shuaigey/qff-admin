@@ -16,6 +16,7 @@ public class ConstantUtil {
     public static String REGISTER_ERROR2="请输入注册信息";
     public static String ZERO_S="0";
     public static Integer ZERO_I=0;
+
     public static String SUCCESS="操作成功";
     public static String ERROR="操作失败";
     public static String ROLE_ERROR="未配置角色权限，请联系管理员";
