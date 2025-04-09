@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 @Slf4j
 public class MailServiceImpl implements MailService {
 
-    @Autowired
+    @Resource
     private Mail mail;
     @Override
     public boolean send(String to, String title, String content) {

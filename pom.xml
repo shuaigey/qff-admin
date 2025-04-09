@@ -89,7 +89,12 @@
             <version>4.4.0</version>
         </dependency>
 
-
+        <dependency>
+            <!-- Import dependency management from Spring Boot -->
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version> <!-- 请使用你项目中Spring Boot的版本 -->
+        </dependency>
     </dependencies>
 
     <build>
