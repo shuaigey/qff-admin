@@ -26,7 +26,7 @@ public class ArticleController {
 
     @Resource
     ArticleService articleService;
-
+    /*新增文章*/
     @PostMapping("/insertArticle")
     public QffResponse insertArticle(@RequestBody Article articleParam ) {
         return articleService.insertArticle(articleParam);
